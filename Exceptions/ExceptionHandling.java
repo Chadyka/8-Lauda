@@ -4,6 +4,10 @@ public class ExceptionHandling {
         System.out.println("Test case when input is null!");
         test(null);
 
+        // Ha az input null akkor Runtime Exceptiont
+        // fogunk kapni, hiszen ezt csak az else
+        // ág kezeli, majd lefut a finally is
+
         try {
             System.out.println("Test case when input is float!");
             test(1F);
@@ -11,8 +15,19 @@ public class ExceptionHandling {
             // Ide miért kerül a vezérlés!?
         }
 
+        // float esetén ChildExceptiont kapunk az if
+        // ágtól ami aztán a catch ágban ParentExceptiont
+        // dob, majd befejezzük a finally ágban a test
+        // metódus try-catch blokkját és a main-ben ahol
+        // meghívjuk a test metódust a catch ág kezeli a
+        // fennmaradó ParentExceptiont
+
         System.out.println("Test case when input is String!");
         test("string");
+
+        // String esetén ParentExceptiont kapunk,
+        // majd kilépünk a programból, emiatt a
+        // finally ág már nem fog lefutni
     }
 
     private static void test(Object input) {
