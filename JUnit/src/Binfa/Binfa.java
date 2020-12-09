@@ -122,6 +122,4 @@ public class Binfa {
     public static void usage() {
         System.out.println("Usage: lzwtree in_file -o out_file");
     }
-
-
 }

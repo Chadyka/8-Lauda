@@ -28,6 +28,6 @@ public class Node {
     }
 
     private char charIn;
-    private Node left = null;
-    private Node right = null;
+    private Node left;
+    private Node right;
 }

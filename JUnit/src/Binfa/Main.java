@@ -1,6 +1,6 @@
 package Binfa;
 
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,26 +13,26 @@ public class Main {
             System.exit(-1);
         }
         try {
-            java.io.FileInputStream beFile = new java.io.FileInputStream(new java.io.File(args[0]));
-            java.io.PrintWriter kiFile = new java.io.PrintWriter(new java.io.BufferedWriter(new java.io.FileWriter(args[2])));
+            FileInputStream inFile = new FileInputStream(args[0]);
+            PrintWriter outFile = new PrintWriter(new BufferedWriter(new FileWriter(args[2])));
             byte[] b = new byte[1];
             Binfa binFa = new Binfa();
-            while (beFile.read(b) != -1) {
+            while (inFile.read(b) != -1) {
                 if (b[0] == 0x0a) {
                     break;
                 }
             }
-            boolean kommentben = false;
-            while (beFile.read(b) != -1) {
+            boolean com = false;
+            while (inFile.read(b) != -1) {
                 if (b[0] == 0x3e) {
-                    kommentben = true;
+                    com = true;
                     continue;
                 }
                 if (b[0] == 0x0a) {
-                    kommentben = false;
+                    com = false;
                     continue;
                 }
-                if (kommentben) {
+                if (com) {
                     continue;
                 }
                 if (b[0] == 0x4e) {
@@ -43,14 +43,14 @@ public class Main {
                     b[0] <<= 1;
                 }
             }
-            binFa.writeTree(kiFile);
-            kiFile.println("depth = " + binFa.getDepth());
-            kiFile.println("mean = " + binFa.getAverage());
-            kiFile.println("var = " + binFa.getMean());
-            kiFile.close();
-            beFile.close();
-        } catch (IOException fnfException) {
-            fnfException.printStackTrace();
+            binFa.writeTree(outFile);
+            outFile.println("depth = " + binFa.getDepth());
+            outFile.println("mean = " + binFa.getAverage());
+            outFile.println("var = " + binFa.getMean());
+            outFile.close();
+            inFile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
