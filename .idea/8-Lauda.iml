@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Scanner" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Exceptions" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Serialization" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/9_Calvin/BackToTheFuture" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -22,5 +23,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="junit:junit:4.8" level="project" />
+    <orderEntry type="library" name="junit5" level="project" />
   </component>
 </module>
